@@ -1,111 +1,94 @@
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
+Student: Ryan Agatep
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
+/******************* 
+* Array of Objects *
+*******************/
 
 let quotes = [
   {
-    quote: `Quote No.1`,
-    source: `Source No.1`,
-    citation: `Citation No.1`,
-    //year: `Year No.1`
+    quote: `I know.`,
+    source: `Han Solo to Princess Leia`,
+    citation: `The Empire Strikes Back`,
+    year: `1980`
   },
   {
-    quote: `Quote No.2`,
-    source: `Source No.2`,
-    citation: `Citation No.2`,
-    year: `Year No.2`
+    quote: `It’d be a lot cooler if you did.`,
+    source: `Wooderson to Mitch Kramer`,
+    citation: `Dazed and Confused`,
+    year: `1993`
   },
   {
-    quote: `Quote No.3`,
-    source: `Source No.3`,
-    //citation: `Citation No.3`,
-    year: `Year No.3`
+    quote: `I have nipples, Greg. Could you milk me?`,
+    source: `Jack Byrnes to Greg Focker`,
+    citation: `Meet the Parents`,
+    year: `2000`
   },
   {
-    quote: `Quote No.4`,
-    source: `Source No.4`,
-    citation: `Citation No.4`,
-    year: `Year No.4`
+    quote: `So, you’re telling me there’s a chance!`,
+    source: `Lloyd Christmas to Mary Swanson`,
+    citation: `Dumb and Dumber`,
+    //year: `Year No.3`
   },
   {
-    quote: `Quote No.5`,
-    source: `Source No.5`,
-    citation: `Citation No.5`,
-    year: `Year No.5`
+    quote: `Napoleon, don’t be jealous that I’ve been chatting online with babes all day.`,
+    source: `Kip to Napoleon Dynamite`,
+    //citation: `Citation No.4`,
+    //year: `Year No.4`
   },
 ];
 
-/***
- * `getRandomQuote` function
-***/
-
+/*****************************
+ * `getRandomQuote` function *
+*****************************/
+/*
+ The getRandomQuote() function generates a random number from 0 to the length of the quotes array, 
+ using the Math.floor() and Math.random() functions, assigns it to a variable,  
+ and returns it. The console.log method shows the quote number in the console. 
+*/
 function getRandomQuote() {
-  // 1. Create a variable that generates a random number
-  // between zero and the last index in the `quotes` array
   const randomNumber = Math.floor(Math.random() * quotes.length);
-  // 2. Use the random number variable and bracket notation 
-  // to grab a random object from the `quotes` array, and 
-  // store it in a variable
   let randomQuoteObject = quotes[randomNumber];
-  // 3. Return the variable storing the random quote object
+  console.log(randomNumber);
   return randomQuoteObject;
 }
-//console.log(getRandomQuote(quotes));
-//console.log(randomNumber);
 
-/***
- * `printQuote` function
-***/
+/*************************
+ * `printQuote` function *
+*************************/
 
+/*
+ The printQuote() function, calls the getRandomQuote() function 
+ and assigns it to the randomQuote variable.
+ The variable html is initiated with the first two elements, 
+ their classNames, and the quote and source properties.
+*/
 function printQuote() {
-  // 1. Create a variable that calls the getRandomQuote() 
-  // function
   let randomQuote = getRandomQuote();
-  // 2. Create a variable that initiates your HTML string with 
-  // the first two <p></p> elements, their classNames, 
-  // and the quote and source properties, but leave off 
-  // the second closing `</p>` tag for now
-  let html = ``;
-  html += `<p class="quote">${randomQuote.quote}</p>`;
-  html += `<p class="source">${randomQuote.source}`;
-  // 3. Use an if statement to check if the citation property 
-  // exists, and if it does, concatenate a <span></span> 
-  // element, appropriate className, and citation property 
-  // to the HTML string
+  let html = `<p class="quote">${randomQuote.quote}</p>
+              <p class="source">${randomQuote.source}`;
+/* 
+ The if statements check if there are citation and sources properties per object,
+ and added to the html string.
+*/
   if(randomQuote.citation){
     html += `<span class="citation">${randomQuote.citation}</span>`;
-  } else {
-    html += `<span class="citation">No Citation</span>`;
-  }
-  // 4. Use an if statement to check of the year property exists, 
-  // and if it does, concatenate a <span></span> element, 
-  // appropriate className, and year property to the HTML 
-  //string
+  } 
   if(randomQuote.year){
     html += `<span class="year">${randomQuote.year}</span>`;
-  } else {
-    html += `<span class="year">No Year</span>`;
-  }
-  // 5. After the two if statements, concatenate the closing </p> 
-  // tag to the HTML string
+  } 
+// Closes the html string and set the quote-box div to the complete HTML string.
   html += `</p>`
-  // 6. set the innerHTML of the quote-box div to equal the 
-  // complete HTML string
+  console.log(html);
   document.querySelector('#quote-box').innerHTML = html;
 }
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
+/*************************************************** 
+ * click event listener for the print quote button *
+ * DO NOT CHANGE THE CODE BELOW!!                  *
+***************************************************/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
