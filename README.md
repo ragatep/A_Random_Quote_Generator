@@ -1,7 +1,10 @@
-Hello.
+Teamtreehouse - Project 1
+A Random Quote Generator
 
-I’ve created a web app that displays funny random movies quotes I copied from an internet search result. 
+Hello Internet.
 
-I have only used the concepts and techniques listed in the project instructions, and I have copied from sample codes from topics covered in the courses so far.
+I’ve created a [web app](https://ragatep.github.io/A_Random_Quote_Generator/) that generates and displays funny random movies quotes to demonstrate what I’ve learned from Teacmtreehouse’s Techdegree Full Stack Javascript Unit 1.
 
-ryan agatep
+I have only used the concepts and techniques listed in the project instructions, but I have also copied from sample codes provided from topics covered in the courses from Unit 1.
+
+~ryan
