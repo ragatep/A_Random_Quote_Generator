@@ -1,13 +1,12 @@
-/******************************************
+/************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 Student: Ryan Agatep
-******************************************/
+************************************/
 
-/******************* 
-* Array of Objects *
-*******************/
-
+/**
+ * Array of objects
+ */
 let quotes = [
   {
     quote: `I know.`,
@@ -40,55 +39,61 @@ let quotes = [
     //year: `Year No.4`
   },
 ];
-
-/*****************************
- * `getRandomQuote` function *
-*****************************/
-/*
- The getRandomQuote() function generates a random number from 0 to the length of the quotes array, 
- using the Math.floor() and Math.random() functions, assigns it to a variable,  
- and returns it. The console.log method shows the quote number in the console. 
-*/
+/**
+ *  The getRandomQuote function generates a random number from 0 to the length of the quotes array, 
+ *  using the Math.floor() and Math.random() functions, assigns it to a variable, 
+ *  and returns it. The console.log method shows the quote number in the console.
+ */
 function getRandomQuote() {
+  // const randomNumber = upper => Math.floor(Math.random() * upper);
   const randomNumber = Math.floor(Math.random() * quotes.length);
   let randomQuoteObject = quotes[randomNumber];
-  console.log(randomNumber);
+  // console.log(randomNumber);
   return randomQuoteObject;
 }
-
-/*************************
- * `printQuote` function *
-*************************/
-
-/*
- The printQuote() function, calls the getRandomQuote() function 
- and assigns it to the randomQuote variable.
- The variable html is initiated with the first two elements, 
- their classNames, and the quote and source properties.
-*/
+/**
+ * The getRandomColor function generates a random color for the page's background
+ */
+function getRandomColor() {
+  const rgbValue = () => { return Math.floor(Math.random() * 255); }
+  return `rgb(${rgbValue()}, ${rgbValue()}, ${rgbValue()})`;
+}
+/**
+ * showTimer function
+ * Prints a new quote at a fixed interval.
+ */
+const showTimer = () => {
+  printQuote();
+}; 
+// Changes quote every 15 seconds
+setInterval(showTimer, 15000);
+/**
+ *  The printQuote function, calls the getRandomQuote() function generates
+ *    and assigns it to the randomQuote variable.
+ *  The variable html is initiated with the first two elements, 
+ *    their classNames, and the quote and source properties.
+ */
 function printQuote() {
   let randomQuote = getRandomQuote();
   let html = `<p class="quote">${randomQuote.quote}</p>
               <p class="source">${randomQuote.source}`;
-/* 
- The if statements check if there are citation and sources properties per object,
- and added to the html string.
-*/
+  /**
+   *  The if statements check if there are citation and sources properties per object,
+   and added to the html string.
+  */
   if(randomQuote.citation){
     html += `<span class="citation">${randomQuote.citation}</span>`;
   } 
   if(randomQuote.year){
     html += `<span class="year">${randomQuote.year}</span>`;
   } 
-// Closes the html string and set the quote-box div to the complete HTML string.
+  // Closes the html string and set the quote-box div to the complete HTML string.
   html += `</p>`
-  console.log(html);
+  //console.log(html);
   document.querySelector('#quote-box').innerHTML = html;
+  document.querySelector('body').style = `background-color: ${getRandomColor()} `;
 }
-
-/*************************************************** 
- * click event listener for the print quote button *
- * DO NOT CHANGE THE CODE BELOW!!                  *
-***************************************************/
-
+/**
+ * click event listener for the print quote button
+ */
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
