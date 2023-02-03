@@ -66,7 +66,10 @@ const showTimer = () => {
   printQuote();
 }; 
 // Changes quote every 15 seconds
-setInterval(showTimer, 15000);
+const startTimer = () => {
+  setInterval(showTimer, 15000);
+}; 
+startTimer();
 /**
  *  The printQuote function, calls the getRandomQuote() function generates
  *    and assigns it to the randomQuote variable.
