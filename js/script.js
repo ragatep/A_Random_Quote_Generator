@@ -44,11 +44,11 @@ let quotes = [
  *  using the Math.floor() and Math.random() functions, assigns it to a variable, 
  *  and returns it. The console.log method shows the quote number in the console.
  */
+const generateRandomNumber = upper => Math.floor(Math.random() * upper);
+
 function getRandomQuote() {
-  // const randomNumber = upper => Math.floor(Math.random() * upper);
-  const randomNumber = Math.floor(Math.random() * quotes.length);
+  const randomNumber = generateRandomNumber(quotes.length);
   let randomQuoteObject = quotes[randomNumber];
-  // console.log(randomNumber);
   return randomQuoteObject;
 }
 /**
