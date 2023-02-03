@@ -48,9 +48,10 @@ const generateRandomNumber = upper => Math.floor(Math.random() * upper);
 
 function getRandomQuote() {
   const randomNumber = generateRandomNumber(quotes.length);
-  let randomQuoteObject = quotes[randomNumber];
-  return randomQuoteObject;
+  const {quote, source, citation, year} = quotes[randomNumber];
+  return {quote, source, citation, year};
 }
+
 /**
  * The getRandomColor function generates a random color for the page's background
  */
